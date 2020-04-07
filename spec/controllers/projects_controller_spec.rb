@@ -124,10 +124,10 @@ RSpec.describe ProjectsController, type: :controller do
       expect(response).to_not be_successful
     end
 
-    it 'sets @track_event' do
+    it 'tracks an event' do
       sign_in user
       get :new
-      expect(assigns(:track_event)).to eq('Project creation started')
+      expect(session[:track_event]).to eq('Project creation started')
     end
 
   end
@@ -153,10 +153,10 @@ RSpec.describe ProjectsController, type: :controller do
       expect(response).to be_redirect
     end
 
-    it 'sets @track_event' do
+    it 'tracks an event' do
       sign_in(user)
       post :create, params: valid_params
-      expect(assigns(:track_event)).to eq('Project creation complete')
+      expect(session[:track_event]).to eq('Project creation complete')
     end
   end
 
@@ -183,7 +183,7 @@ RSpec.describe ProjectsController, type: :controller do
       fail
     end
 
-    it 'sets @track_event if you are not currently a volunteer' do
+    it 'tracks an event if you are not currently a volunteer' do
       pending 'TODO'
       fail
     end
