@@ -31,7 +31,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     @users = @users.where(visibility: true) unless current_user && current_user.is_admin?
 
-    @users = @users.includes(:skills).page(params[:page]).per(24)
+    @users = @users.includes(:skills).page(params[:page]).per(25)
 
     @index_from = (@users.prev_page || 0) * @users.current_per_page + 1
     @index_to = [@index_from + @users.current_per_page - 1, @users.total_count].min
