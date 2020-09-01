@@ -72,7 +72,8 @@ class Project < ApplicationRecord
         :created_at,
         :updated_at,
         :status,
-        :short_description
+        :short_description,
+        :organization_status
       ],
       methods: [:to_param, :volunteered_users_count, :project_type_list, :skill_list]
     )
